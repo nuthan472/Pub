@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
 
 export default function ContactForm() {
   const [form, setForm] = useState({
@@ -10,23 +11,30 @@ export default function ContactForm() {
     club: "Best Pubs in Koramangala",
   });
 
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
+
+    const API_BASE =
+      process.env.NODE_ENV === "production"
+        ? "https://nrevents-backend.onrender.com"
+        : "http://localhost:5000";
 
     try {
-     const response = await fetch("http://localhost:5000/api/contact", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(form),
-});
-
+      const response = await fetch(`${API_BASE}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
 
       if (response.ok) {
-        alert("🎉 Booking request sent successfully!");
+        toast.success("🎉 Booking request sent!");
         setForm({
           name: "",
           phone: "",
@@ -36,16 +44,18 @@ export default function ContactForm() {
         });
       } else {
         const errorData = await response.json();
-        alert("❌ Failed to send: " + (errorData.error || "Try again later."));
+        toast.error("❌ Failed: " + (errorData.error || "Try again later."));
       }
     } catch (error) {
-      console.error("Error:", error);
-      alert("⚠️ Server not reachable. Try again after starting the backend.");
+      toast.error("⚠️ Server error! Try again later.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white p-10 flex items-center justify-center">
+      <Toaster position="top-center" reverseOrder={false} />
       <div className="w-full max-w-2xl bg-white/10 backdrop-blur-sm rounded-2xl shadow-2xl p-8">
         <h2 className="text-4xl font-extrabold text-center mb-6 text-pink-400 drop-shadow">
           🎉 Book Your Club Night
@@ -61,7 +71,6 @@ export default function ContactForm() {
             required
             className="p-4 rounded-lg bg-white/20 placeholder-gray-300 text-white outline-none focus:ring-2 focus:ring-pink-500"
           />
-
           <input
             type="tel"
             name="phone"
@@ -71,7 +80,6 @@ export default function ContactForm() {
             required
             className="p-4 rounded-lg bg-white/20 placeholder-gray-300 text-white outline-none focus:ring-2 focus:ring-pink-500"
           />
-
           <input
             type="number"
             name="people"
@@ -81,7 +89,6 @@ export default function ContactForm() {
             required
             className="p-4 rounded-lg bg-white/20 placeholder-gray-300 text-white outline-none focus:ring-2 focus:ring-pink-500"
           />
-
           <input
             type="number"
             name="couples"
@@ -91,7 +98,6 @@ export default function ContactForm() {
             required
             className="p-4 rounded-lg bg-white/20 placeholder-gray-300 text-white outline-none focus:ring-2 focus:ring-pink-500"
           />
-
           <input
             list="clubs"
             name="club"
@@ -102,32 +108,23 @@ export default function ContactForm() {
           />
           <datalist id="clubs">
             <option value="Arbor Brewing Company" />
-            <option value="Bob’s Bar" />
             <option value="Byg Brewski" />
-            <option value="Church Street Social" />
-            <option value="Fenny's Lounge & Kitchen" />
-            <option value="Gilly's Restobar" />
-            <option value="Hangover" />
-            <option value="House of Commons" />
-            <option value="Koramangala Social" />
-            <option value="LOFT 38" />
-            <option value="Pecos Mojo" />
-            <option value="Prost Brewpub" />
-            <option value="Skyye Lounge" />
-            <option value="The 13th Floor" />
-            <option value="The Bier Library" />
-            <option value="The Local" />
-            <option value="The Pump House" />
-            <option value="Tipsy Bull" />
             <option value="Toit" />
-            <option value="XU Fashion Bar Kitchen" />
+            <option value="LOFT 38" />
+            <option value="Skyye Lounge" />
+            {/* Add more clubs if needed */}
           </datalist>
 
           <button
             type="submit"
-            className="bg-pink-600 hover:bg-pink-700 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 hover:scale-105"
+            disabled={loading}
+            className={`${
+              loading ? "bg-pink-300 cursor-not-allowed" : "bg-pink-600 hover:bg-pink-700"
+            } text-white font-bold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 ${
+              !loading && "hover:scale-105"
+            }`}
           >
-            🍾 Submit & Party
+            {loading ? "⏳ Booking..." : "🍾 Submit & Party"}
           </button>
         </form>
       </div>
