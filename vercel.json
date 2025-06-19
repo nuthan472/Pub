@@ -1,13 +1,10 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "functions": {
-    "api/test.js": {
-      "memory": 3009,
-      "maxDuration": 30
-    },
-    "api/*.js": {
-      "memory": 3009,
-      "maxDuration": 30
-    }
-  }
+  "buildCommand": "cd client && npm install && npm run build",
+  "outputDirectory": "client/dist",
+  "framework": "vite",
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
