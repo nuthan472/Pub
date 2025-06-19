@@ -9,11 +9,11 @@ import Footer from "./components/Footer";
 const App: React.FC = () => {
   return (
     <div className="bg-gray-900 text-white min-h-screen font-sans">
-      {/* Sticky Navbar on Top */}
+      {/* Fixed Sticky Navbar */}
       <NavBar />
 
-      {/* Page Sections (with padding to prevent overlap with fixed navbar) */}
-      <main className="pt-24 px-4 space-y-20">
+      {/* Add top padding to avoid overlap with fixed navbar */}
+      <main className="pt-16"> {/* 👈 Pushes content below fixed NavBar */}
         <section id="about">
           <Hero />
         </section>
