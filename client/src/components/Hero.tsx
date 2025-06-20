@@ -30,7 +30,7 @@ const services = [
     icon: <Poster size={28} className="text-pink-200" />,
     title: "Poster Design & Branding",
     text: "Scroll-stopping designs that roar online and offline.",
-    bg: "/mirror-roof-top.jpg",
+    bg: "/preview-page0.jpg",
   },
   {
     icon: <Video size={28} className="text-blue-200" />,
@@ -101,7 +101,7 @@ const Hero = () => {
 
         {/* CTA */}
         <motion.a
-          href="#contact"
+          href="/contact"
           whileHover={{ scale: 1.05 }}
           className="inline-block mt-12 px-6 py-3 sm:px-8 sm:py-4 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full text-white font-bold text-base sm:text-lg transition-all duration-300 shadow-md hover:shadow-orange-400/40"
         >

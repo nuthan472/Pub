@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Phone, Info, Beer, Mail, Menu, X } from 'lucide-react';
 import { FaInstagram } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const EventNavbar: React.FC = () => {
   const [showNavbar, setShowNavbar] = useState(true);
@@ -47,20 +48,20 @@ const EventNavbar: React.FC = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden md:flex gap-8 text-md font-semibold text-white">
-          <a href="#about" className="flex items-center gap-2 hover:text-pink-400 transition">
+          <Link to="/" className="flex items-center gap-2 hover:text-pink-400 transition">
             <Info size={18} /> About
-          </a>
-          <a href="#pubs" className="flex items-center gap-2 hover:text-pink-400 transition">
+          </Link>
+          <Link to="/pubs" className="flex items-center gap-2 hover:text-pink-400 transition">
             <Beer size={18} /> Pubs We Offer
-          </a>
-          <a href="#contact" className="flex items-center gap-2 hover:text-pink-400 transition">
+          </Link>
+          <Link to="/contact" className="flex items-center gap-2 hover:text-pink-400 transition">
             <Mail size={18} /> Contact Us
-          </a>
+          </Link>
         </nav>
 
         {/* Right - Contact & Menu */}
         <div className="flex items-center gap-4">
-          {/* Phone + Insta (Desktop) */}
+          {/* Desktop Contact */}
           <div className="hidden md:flex items-center gap-4 text-sm text-white">
             <a
               href="tel:+919391620139"
@@ -78,23 +79,22 @@ const EventNavbar: React.FC = () => {
             </a>
           </div>
 
-          {/* Mobile: Phone + Insta */}
+          {/* Mobile Contact */}
           <div className="md:hidden flex items-center gap-3 text-xs text-white">
             <a href="tel:+919391620139" className="flex items-center gap-1">
               <Phone size={14} /> +91 93916 20139
             </a>
-           <a
-  href="https://instagram.com/nreventsclub"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="text-xl text-pink-500 hover:text-pink-400 transition hover:scale-110"
->
-  <FaInstagram />
-</a>
-
+            <a
+              href="https://instagram.com/nreventsclub"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xl text-pink-500 hover:text-pink-400 transition hover:scale-110"
+            >
+              <FaInstagram />
+            </a>
           </div>
 
-          {/* Hamburger Toggle */}
+          {/* Hamburger */}
           <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-white">
             {menuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -110,15 +110,15 @@ const EventNavbar: React.FC = () => {
             exit={{ opacity: 0, y: -10 }}
             className="md:hidden fixed top-20 left-0 w-full bg-black bg-opacity-80 text-white flex flex-col gap-6 px-6 py-8 z-40 shadow-lg"
           >
-            <a onClick={() => setMenuOpen(false)} href="#about" className="flex items-center gap-2 text-lg hover:text-pink-400">
+            <Link onClick={() => setMenuOpen(false)} to="/" className="flex items-center gap-2 text-lg hover:text-pink-400">
               <Info size={20} /> About
-            </a>
-            <a onClick={() => setMenuOpen(false)} href="#pubs" className="flex items-center gap-2 text-lg hover:text-pink-400">
+            </Link>
+            <Link onClick={() => setMenuOpen(false)} to="/pubs" className="flex items-center gap-2 text-lg hover:text-pink-400">
               <Beer size={20} /> Pubs We Offer
-            </a>
-            <a onClick={() => setMenuOpen(false)} href="#contact" className="flex items-center gap-2 text-lg hover:text-pink-400">
+            </Link>
+            <Link onClick={() => setMenuOpen(false)} to="/contact" className="flex items-center gap-2 text-lg hover:text-pink-400">
               <Mail size={20} /> Contact Us
-            </a>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>
