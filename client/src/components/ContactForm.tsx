@@ -23,10 +23,8 @@ export default function ContactForm() {
     e.preventDefault();
     setLoading(true);
 
-    const API_BASE =
-      process.env.NODE_ENV === "production"
-        ? "https://nrevents-backend.onrender.com"
-        : "http://localhost:5000";
+   const API_BASE = "https://nr-events-backend-3.onrender.com";
+
 
     try {
       const response = await fetch(`${API_BASE}/api/contact`, {
