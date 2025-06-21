@@ -21,10 +21,11 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/pubs" element={<Pubs />} />
+              
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
-
+    
         {/* Footer */}
         <Footer />
       </div>

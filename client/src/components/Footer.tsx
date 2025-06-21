@@ -10,7 +10,7 @@ export default function Footer() {
         </p>
         <div className="flex gap-6 text-2xl">
           <a
-            href="https://www.instagram.com"
+            href="https://www.instagram.com/nr_events_45?igsh=anE5Z2JvcXFjZDJy"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-pink-400 transition duration-300"

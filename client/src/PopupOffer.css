@@ -1,0 +1,140 @@
+.popup-offer-3d {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  width: 320px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.22), 0 1.5px 6px rgba(0,0,0,0.12);
+  padding: 24px 24px 18px 24px;
+  z-index: 9999;
+  animation: popup3d-initial 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  transition: box-shadow 0.2s;
+}
+
+.popup-from-button {
+  animation: popup3d-from-button 0.7s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes popup3d-initial {
+  0% {
+    transform: scale(0) rotateY(40deg) translateY(80px);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.05) rotateY(-6deg) translateY(-6px);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotateY(0deg) translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes popup3d-from-button {
+  0% {
+    transform: scale(0) translateX(130px) rotateY(-30deg);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.05) translateX(-10px) rotateY(6deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) translateX(0) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+.popup-offer-close {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.2s;
+}
+
+.popup-offer-close:hover {
+  color: #e74c3c;
+}
+
+.popup-offer-girl {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.popup-girl-emoji {
+  font-size: 2.5rem;
+  margin-right: 9px;
+  animation: wave-hand 1.1s infinite alternate;
+}
+
+@keyframes wave-hand {
+  0% { transform: rotate(0deg);}
+  50% { transform: rotate(20deg);}
+  100% { transform: rotate(-10deg);}
+}
+
+.popup-offer-hi {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ee44a0;
+  text-shadow: 0 1px 2px #fff;
+}
+
+.popup-offer-content h3 {
+  margin: 0 0 6px 0;
+  color: #1a5d99;
+  font-weight: 700;
+  font-size: 1.13rem;
+}
+
+.popup-offer-content p {
+  margin: 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+.popup-offer-content a {
+  color: #25D366;
+  font-weight: bold;
+  text-decoration: none;
+  transition: text-decoration 0.2s;
+}
+
+.popup-offer-content a:hover {
+  text-decoration: underline;
+}
+
+/* Floating Action Button */
+.popup-offer-fab {
+  position: fixed;
+  bottom: 110px;
+  right: 38px;
+  width: 56px;
+  height: 56px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 5px 16px rgba(0,0,0,0.17);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  z-index: 10000;
+  cursor: pointer;
+  transition: box-shadow 0.15s;
+}
+.popup-offer-fab:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.22);
+}
+.popup-offer-fab .popup-girl-emoji {
+  margin: 0;
+  font-size: 2rem;
+  animation: wave-hand 0.9s infinite alternate;
+}

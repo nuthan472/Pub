@@ -70,7 +70,7 @@ const EventNavbar: React.FC = () => {
               <Phone size={16} /> +91 93916 20139
             </a>
             <a
-              href="https://instagram.com/nreventsclub"
+              href="https://www.instagram.com/nr_events_45?igsh=anE5Z2JvcXFjZDJy"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xl text-transparent bg-gradient-to-br from-yellow-400 via-pink-500 to-purple-600 bg-clip-text hover:scale-110 transition"
@@ -85,7 +85,7 @@ const EventNavbar: React.FC = () => {
               <Phone size={14} /> +91 93916 20139
             </a>
             <a
-              href="https://instagram.com/nreventsclub"
+              href="https://www.instagram.com/nr_events_45?igsh=anE5Z2JvcXFjZDJy"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xl text-pink-500 hover:text-pink-400 transition hover:scale-110"
